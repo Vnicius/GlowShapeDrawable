@@ -10,7 +10,8 @@ import java.util.*
 
 class GlowShapeDrawable : LayerDrawable(arrayOf(ShapeDrawable())) {
     private val defaultColor = Color.TRANSPARENT
-    private val defaultColorList = ColorStateList(arrayOf(), intArrayOf(defaultColor))
+    private val defaultColorList =
+        ColorStateList(arrayOf(intArrayOf(android.R.attr.defaultValue)), intArrayOf(defaultColor))
     private val drawable = getDrawable(0) as ShapeDrawable
 
     val paint: Paint = drawable.paint
