@@ -1,3 +1,5 @@
+[![](https://jitpack.io/v/Vnicius/GlowShapeDrawable.svg)](https://jitpack.io/#Vnicius/GlowShapeDrawable)
+
 # GlowShapeDrawable
 
 <div align="center">
