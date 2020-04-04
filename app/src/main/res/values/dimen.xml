@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="light_saber_size">200dp</dimen>
+    <dimen name="glow_size">10dp</dimen>
+    <dimen name="corner_radius">50dp</dimen>
+</resources>
