@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.children
 import io.github.vnicius.glowshapedrawable.databinding.ActivityMainBinding
 
@@ -30,7 +31,7 @@ class MainActivity : AppCompatActivity() {
             backgroundColorList = ContextCompat.getColorStateList(baseContext, R.color.red_light)!!
             glow = Glow(
                 ContextCompat.getColorStateList(baseContext, R.color.red_light_glow)!!,
-                baseContext.resources.getDimension(R.dimen.glow_size).toInt()
+                size = baseContext.resources.getDimension(R.dimen.glow_size).toInt()
             )
             cornerRadius = baseContext.resources.getDimension(R.dimen.corner_radius)
         }
@@ -39,7 +40,7 @@ class MainActivity : AppCompatActivity() {
                 ContextCompat.getColorStateList(baseContext, R.color.yellow_light)!!
             glow = Glow(
                 ContextCompat.getColorStateList(baseContext, R.color.yellow_light_glow)!!,
-                baseContext.resources.getDimension(R.dimen.glow_size).toInt()
+                size = baseContext.resources.getDimension(R.dimen.glow_size).toInt()
             )
             cornerRadius = baseContext.resources.getDimension(R.dimen.corner_radius)
         }
@@ -48,7 +49,7 @@ class MainActivity : AppCompatActivity() {
                 ContextCompat.getColorStateList(baseContext, R.color.green_light)!!
             glow = Glow(
                 ContextCompat.getColorStateList(baseContext, R.color.green_light_glow)!!,
-                baseContext.resources.getDimension(R.dimen.glow_size).toInt()
+                size = baseContext.resources.getDimension(R.dimen.glow_size).toInt()
             )
             cornerRadius = baseContext.resources.getDimension(R.dimen.corner_radius)
         }
@@ -93,7 +94,7 @@ class MainActivity : AppCompatActivity() {
                         intArrayOf(android.R.attr.defaultValue)
                     ), intArrayOf(Color.CYAN)
                 ),
-                baseContext.resources.getDimension(R.dimen.glow_size).toInt()
+                size = baseContext.resources.getDimension(R.dimen.glow_size).toInt()
             )
             cornerRadius = baseContext.resources.getDimension(R.dimen.corner_radius)
         }
@@ -124,15 +125,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupButton() {
         val backgroundDrawable = GlowShapeDrawable().apply {
-            backgroundColorList = ColorStateList(
-                arrayOf(intArrayOf(android.R.attr.defaultValue)),
-                intArrayOf(Color.MAGENTA)
-            )
+            backgroundColor = ResourcesCompat.getColor(baseContext.resources, R.color.colorPrimary, null)
             glow = Glow(
                 ColorStateList(
                     arrayOf(intArrayOf(android.R.attr.defaultValue)),
                     intArrayOf(Color.MAGENTA)
-                ), baseContext.resources.getDimension(R.dimen.glow_size).toInt()
+                ), size =  baseContext.resources.getDimension(R.dimen.glow_size).toInt()
             )
         }
 

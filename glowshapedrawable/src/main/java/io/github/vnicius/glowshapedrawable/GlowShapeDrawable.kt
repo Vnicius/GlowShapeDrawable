@@ -15,8 +15,9 @@ class GlowShapeDrawable : LayerDrawable(arrayOf(ShapeDrawable())) {
     private val drawable = getDrawable(0) as ShapeDrawable
 
     val paint: Paint = drawable.paint
+    var backgroundColor: Int = Color.TRANSPARENT
     var backgroundColorList: ColorStateList = defaultColorList
-    var glow: Glow = Glow(defaultColorList, 0)
+    var glow: Glow = Glow(defaultColorList, size = 0)
         set(value) {
             field = value
 
@@ -34,9 +35,15 @@ class GlowShapeDrawable : LayerDrawable(arrayOf(ShapeDrawable())) {
     override fun isStateful(): Boolean = true
 
     override fun onStateChange(state: IntArray?): Boolean {
-        val backgroundColor =
+        val glowColorStateList = glow.colorList ?: defaultColorList
+        val backgroundColor = if (backgroundColorList != defaultColorList)
             backgroundColorList.getColorForState(state, backgroundColorList.defaultColor)
-        val glowColor = glow.colorList.getColorForState(state, glow.colorList.defaultColor)
+        else
+            this.backgroundColor
+        val glowColor = if (glowColorStateList != defaultColorList)
+            glowColorStateList.getColorForState(state, glowColorStateList.defaultColor)
+        else
+            glow.color ?: defaultColor
 
         paint.apply {
             color = backgroundColor
